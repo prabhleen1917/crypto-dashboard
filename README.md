@@ -6,12 +6,6 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -20,6 +14,14 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Description
+
+Following pages have been made 
+1) Homepage - List of trending stocks with information and Search functionality on the basis of stock name.
+2) Details Page - We have introduced the feature of chart visulaistion using ApexChart library. Along with this, there are filters on the charts days wise. There is also an option to download the visulisations in png, sbg, jpg
+3) News Feed - There is a nes page which shows the trending news.
+4) Navbar
+   
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
