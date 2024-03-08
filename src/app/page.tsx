@@ -4,6 +4,7 @@ import axios from 'axios';
 import Head from 'next/head';
 import Coins from './components/Coins';
 import SearchBar from './components/SearchBar';
+import Navbar from './components/Navbar';
 import Layout from './components/Layout';
 
 // Define the types for the data you expect to receive from the API
@@ -62,11 +63,14 @@ const Home: React.FC = () => {
 
   return (
     <div>
+     <Navbar/>
       <Layout>
       <Head>
         <title>Crypto Tracker</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <br/>
+      <br/>
       <SearchBar searchQuery={searchTerm}
       handleSearchChange={handleSearch}/>
       </Layout>

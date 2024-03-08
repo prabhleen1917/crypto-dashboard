@@ -1,95 +1,72 @@
-// import axios from "axios";
-// import { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useState } from "react";
+import CandleStickChart from "./CandleStickChart";
 
+interface Coin {
+  id: string;
+  days: number;
+  symbol: string;
+  name: string;
+  market_data: {
+    current_price: {
+      usd: number;
+    };
+  };
+}
 
-// interface Coin {
-//   id: string;
-// }
+interface CoinInfoProps {
+  coin: Coin;
+}
 
-// interface CoinInfoProps {
-//   coin: Coin;
-// }
+const timePeriods = [
+  { label: "1D", value: 1 },
+  { label: "1W", value: 7 },
+  { label: "1M", value: 30 },
+];
 
-// type HistoricData = number[][];
+const CoinInfo: React.FC<CoinInfoProps> = ({ coin }) => {
+  // State to keep track of selected time period
+  const [selectedTimePeriod, setSelectedTimePeriod] = useState(timePeriods[1].value); // Default to 1 week
 
-// const CoinInfo: React.FC<CoinInfoProps> = ({ coin }) => {
-//   const [historicData, setHistoricData] = useState<HistoricData | null>(null);
-//   const [days, setDays] = useState<number>(1);
-//   const { currency } = CryptoState();
-//   const [flag, setFlag] = useState<boolean>(false);
+  // Handler for time period button click
+  const handleTimePeriodChange = (days: number) => {
+    console.log('jjj',days)
+    setSelectedTimePeriod(days);
+  };
 
-//   const fetchHistoricData = async () => {
-//     const { data } = await axios.get(HistoricalChart(coin.id, days, currency));
-//     setFlag(true);
-//     setHistoricData(data.prices);
-//   };
+  return (
+    <div className="bg-white dark:bg-[#1C1C25] flex flex-col rounded-[15px] w-[851px] p-8">
+      <div className="flex justify-between items-start">
+        <div className="flex justify-between w-1/3">
+          <div className="flex flex-col">
+            <h1 className="text-xl font-bold">{coin.symbol.toUpperCase()}USDT</h1>
+            <p>{coin.name}</p>
+          </div>
+          <div className="flex flex-col">
+            <h1 className="font-bold">${coin.market_data.current_price.usd.toLocaleString()}</h1>
+            {/* The percentage would likely come from an API, this is hard-coded */}
+            <p>+23.6%</p>
+          </div>
+        </div>
 
-//   useEffect(() => {
-//     fetchHistoricData();
-//   }, [days, currency, coin.id]);
+        <div className="flex gap-4">
+          {timePeriods.map((period) => (
+            <button
+              key={period.value}
+              className={`bg-gray-100 dark:bg-dark text-primary rounded-md font-bold text-sm p-2 ${selectedTimePeriod === period.value ? 'dark:bg-[#262C3038]' : ''}`}
+              onClick={() => handleTimePeriodChange(period.value)}
+            >
+              {period.label}
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="w-full pt-8">
+        {/* Pass the selected time period to the CandleStickChart component */}
+        <CandleStickChart id={coin.id} days={selectedTimePeriod} />
+      </div>
+    </div>
+  );
+};
 
-//   return (
-//     <div className="flex justify-center items-center h-3/4">
-//       <div className="flex flex-col items-center justify-center border border-[#2fffe5] rounded-lg p-10 w-full max-w-md mt-5">
-//         {!historicData || flag === false ? (
-//           <CircularProgress style={{ color: "gold" }} size={250} thickness={1} />
-//         ) : (
-//           <>
-//             <Line
-//               data={{
-//                 labels: historicData.map((coin) => {
-//                   let date = new Date(coin[0]);
-//                   let time = date.getHours() > 12
-//                     ? `${date.getHours() - 12}:${date.getMinutes()} PM`
-//                     : `${date.getHours()}:${date.getMinutes()} AM`;
-//                   return days === 1 ? time : date.toLocaleDateString();
-//                 }),
-//                 datasets: [
-//                   {
-//                     data: historicData.map((coin) => coin[1]),
-//                     label: `Price ( Past ${days} Days ) in ${currency}`,
-//                     borderColor: "#EEBC1D",
-//                   },
-//                 ],
-//               }}
-//               options={{
-//                 elements: {
-//                   point: {
-//                     radius: 1,
-//                   },
-//                 },
-//               }}
-//             />
-//             <div className="flex mt-5 justify-around w-full">
-//               {chartDays.map((day) => (
-//                 <SelectButton
-//                   key={day.value}
-//                   onClick={() => {
-//                     setDays(day.value);
-//                     setFlag(false);
-//                   }}
-//                   selected={day.value === days}
-//                 >
-//                   {day.label}
-//                 </SelectButton>
-//               ))}
-//             </div>
-//           </>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default CoinInfo;
-
-// // This function would need to be updated based on your API call
-// export async function getServerSideProps(context) {
-//   const { id } = context.params as { id: string };
-//   const data = await fetchHistoricalData(id); // You would define this fetch function
-//   return {
-//     props: {
-//       coin: data,
-//     },
-//   };
-// }
+export default CoinInfo;
