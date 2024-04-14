@@ -5,14 +5,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-npm run dev
+ng serve
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Open [http://localhost:4200](http://localhost:4200) with your browser to see the result.
 
 ## Description
 
@@ -20,20 +16,13 @@ Following pages have been made
 1) Homepage - List of trending stocks with information and Search functionality on the basis of stock name.
 2) Details Page - We have introduced the feature of chart visulaistion using ApexChart library. Along with this, there are filters on the charts days wise. There is also an option to download the visulisations in png, sbg, jpg
 3) News Feed - There is a nes page which shows the trending news.
-4) Navbar
+4) Navbar - Have options like Home, News, Trending coins, About, Login button
+5) Login Page/ Registration Page - The backend logic for these pages will be served from the node app deployed already.
+6) Shortlist Feature on Trending Page - This will be visible on the trending Page where users can shortlist their favourite coins.
    
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+To learn more about Angular, refer to the official documentation:
+[Angular Documentation ](https://angular.io/docs) - Learn about Angular features and APIs.
+https://apexcharts.com/docs/angular-charts/ - Learn more about Apex charts
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# project-react-client-techwiz
