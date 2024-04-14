@@ -5,10 +5,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 First, run the development server:
 
 ```bash
-ng serve
+npm run dev
 ```
 
-Open [http://localhost:4200](http://localhost:4200) with your browser to see the result.
+Open [http://localhost:3200](http://localhost:3200) with your browser to see the result.
 
 ## Description
 
@@ -18,11 +18,11 @@ Following pages have been made
 3) News Feed - There is a nes page which shows the trending news.
 4) Navbar - Have options like Home, News, Trending coins, About, Login button
 5) Login Page/ Registration Page - The backend logic for these pages will be served from the node app deployed already.
-6) Shortlist Feature on Trending Page - This will be visible on the trending Page where users can shortlist their favourite coins.
+
    
 ## Learn More
 
-To learn more about Angular, refer to the official documentation:
-[Angular Documentation ](https://angular.io/docs) - Learn about Angular features and APIs.
+To learn more about Nextjs , refer to the official documentation:
+ https://nextjs.org/docs/getting-started/installation - Learn about Angular features and APIs.
 https://apexcharts.com/docs/angular-charts/ - Learn more about Apex charts
 
